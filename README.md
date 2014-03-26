@@ -1,6 +1,4 @@
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
-# Airbnb JavaScript Style Guide() {
+# Salsify JavaScript Style Guide() {
 
 *A mostly reasonable approach to JavaScript*
 
@@ -8,6 +6,7 @@
 
 ## Table of Contents
 
+  1. [Introduction](#introduction)
   1. [Types](#types)
   1. [References](#references)
   1. [Objects](#objects)
@@ -44,6 +43,10 @@
   1. [Chat With Us About Javascript](#chat-with-us-about-javascript)
   1. [Contributors](#contributors)
   1. [License](#license)
+
+## Introduction
+
+  This guide is adapted from the [Airbnb JS style guide](https://github.com/airbnb/javascript). In places where it differs, the reason for the change is noted.
 
 ## Types
 
