@@ -275,6 +275,26 @@
     };
     ```
 
+<a name="es6-object-spreads"></a>
+  - [3.8](#3.8) <a name='3.8'></a> Use Object Spread `...` to shallow clone objects
+
+    ```javascript
+    // bad
+    let clone = {}
+    for (var key in object) {
+      clone[key] = object[key];
+    }
+
+    // good
+    const clone = { ...object };
+    ```
+  - [3.9](#3.9) <a name='3.9'></a> Use Object Spread to extend objects
+
+    ```javascript
+    let object = { foo: 'bar' };
+    let betterObject = { ...object, foo: 'fighters' };
+    ```
+
 **[⬆ back to top](#table-of-contents)**
 
 ## Arrays
@@ -1913,6 +1933,7 @@
 1. [Default Parameters](#es6-default-parameters)
 1. [Rest](#es6-rest)
 1. [Array Spreads](#es6-array-spreads)
+2. [Object Spreads](#es6-object-spreads)
 1. [Let and Const](#references)
 1. [Iterators and Generators](#iterators-and-generators)
 1. [Modules](#modules)
