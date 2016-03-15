@@ -790,6 +790,35 @@
     import { es6 } from './AirbnbStyleGuide';
     export default es6;
     ```
+    
+    
+  - [10.4](#10.4) <a name='10.4'></a>Default exports should come immediately after imports.
+
+  > Why? Readability. The default export is the most important variable defined in the file and should be displayed prominently.
+
+  ```javascript
+  // bad
+  import SalsifyClass from '.SalsifyClass';
+
+  const LessRelevantClass = SalsifyClass.extend({
+    ...
+  });
+
+  export default SalsifyClass.extend({
+    ...
+  });
+
+  // good
+  import SalsifyClass from '.SalsifyClass';
+
+  export default SalsifyClass.extend({
+    ...
+  });
+
+  const LessRelevantClass = SalsifyClass.extend({
+    ...
+  });
+  ```
 
 **[⬆ back to top](#table-of-contents)**
 
