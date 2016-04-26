@@ -831,6 +831,7 @@ Other Style Guides
       console.warn(error);
     }
   }
+```
 
 **[⬆ back to top](#table-of-contents)**
 
