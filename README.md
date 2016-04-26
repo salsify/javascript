@@ -804,6 +804,34 @@ Other Style Guides
     }
     ```
 
+  <a name="functions--async-await"></a><a name="7.14"></a>
+  - [7.14](#functions--async-await) Prefer `async` functions to explicit promise chaining
+
+  > Why? It allows asynchronous control flow to be read linearly just like normal synchronous code
+
+  ```javascript
+  // bad
+  function doSomethingAsync() {
+    return Promise.resolve(doSomethingMaybeAsync()).then((intermediateResult) => {
+      return doSomethingElseAsync(intermediateResult);
+    }).then((finalResult) => {
+      console.log(finalResult);
+    }).catch((error) => {
+      console.warn(error);
+    });
+  }
+
+  // good
+  async function doSomethingAsync() {
+    try {
+      const intermediateResult = await doSomethingMaybeAsync();
+      const finalResult = await doSomethingElseAsync(intermediateResult);
+      console.log(finalResult);
+    } catch (error) {
+      console.warn(error);
+    }
+  }
+
 **[⬆ back to top](#table-of-contents)**
 
 ## Arrow Functions
