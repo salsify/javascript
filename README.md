@@ -1196,36 +1196,35 @@ Other Style Guides
 
 ## Iterators and Generators
 
-  <a name="iterators--nope"></a><a name="11.1"></a>
-  - [11.1](#iterators--nope) Don't use iterators. Prefer JavaScript's higher-order functions like `map()` and `reduce()` instead of loops like `for-of`. eslint: [`no-iterator`](http://eslint.org/docs/rules/no-iterator.html)
+  <a name="iterators--yep"></a><a name="11.1"></a>
+  - [11.1](#iterators--yep) Prefer `for-of` loops to `Array#forEach` when iterating a collection for side effects.
 
-    > Why? This enforces our immutable rule. Dealing with pure functions that return values is easier to reason about than side effects.
+    > Why? `for-of` works with enumerables other than arrays, and allows for things `yield` and `await` in the loop body
 
     ```javascript
     const numbers = [1, 2, 3, 4, 5];
 
     // bad
     let sum = 0;
-    for (let num of numbers) {
-      sum += num;
-    }
-
+    numbers.forEach(num => sum += num);
     sum === 15;
 
     // good
     let sum = 0;
-    numbers.forEach(num => sum += num);
+    for (let num of numbers) {
+      sum += num;
+    }
     sum === 15;
 
-    // best (use the functional force)
+    // also good
     const sum = numbers.reduce((total, num) => total + num, 0);
     sum === 15;
     ```
 
-  <a name="generators--nope"></a><a name="11.2"></a>
-  - [11.2](#generators--nope) Don't use generators for now.
+  <a name="generators--yep"></a><a name="11.2"></a>
+  - [11.2](#generators--yep) Use generators when it makes sense.
 
-    > Why? They don't transpile well to ES5.
+    > Why? Generators allow for easy sequential expression of things like lazy iteration and pausable/resumable computations, and they enable abstractions like those used by [ember-concurrency](https://github.com/machty/ember-concurrency).
 
 **[⬆ back to top](#table-of-contents)**
 
