@@ -1560,6 +1560,7 @@ Other Style Guides
 
     > Why? Generators allow for easy sequential expression of things like lazy iteration and pausable/resumable computations, and they enable abstractions like those used by [ember-concurrency](https://github.com/machty/ember-concurrency).
 
+    ```javascript
     // good
     const increasedByOne = [];
     numbers.forEach((num) => {
