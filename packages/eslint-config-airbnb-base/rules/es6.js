@@ -1,158 +1,176 @@
 module.exports = {
-  'env': {
-    'es6': true
+  env: {
+    es6: true
   },
-  'parserOptions': {
-    'ecmaVersion': 6,
-    'sourceType': 'module',
-    'ecmaFeatures': {
-      'generators': false,
-      'objectLiteralDuplicateProperties': false
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module',
+    ecmaFeatures: {
+      generators: false,
+      objectLiteralDuplicateProperties: false
     }
   },
-  'plugins': [
-    'import'
-  ],
-  'rules': {
+
+  rules: {
     // enforces no braces where they can be omitted
-    // http://eslint.org/docs/rules/arrow-body-style
-    'arrow-body-style': [2, 'as-needed'],
+    // https://eslint.org/docs/rules/arrow-body-style
+    // TODO: enable requireReturnForObjectLiteral?
+    'arrow-body-style': ['error', 'as-needed', {
+      requireReturnForObjectLiteral: false,
+    }],
+
     // require parens in arrow function arguments
-    'arrow-parens': 0,
+    // https://eslint.org/docs/rules/arrow-parens
+    'arrow-parens': ['error', 'always'],
+
     // require space before/after arrow function's arrow
-    // http://eslint.org/docs/rules/arrow-spacing
-    'arrow-spacing': [2, { 'before': true, 'after': true }],
-    // require trailing commas in multiline object literals
-    'comma-dangle': [2, 'always-multiline'],
+    // https://eslint.org/docs/rules/arrow-spacing
+    'arrow-spacing': ['error', { before: true, after: true }],
+
     // verify super() callings in constructors
-    'constructor-super': 0,
+    'constructor-super': 'error',
+
     // enforce the spacing around the * in generator functions
-    'generator-star-spacing': 0,
+    // https://eslint.org/docs/rules/generator-star-spacing
+    'generator-star-spacing': ['error', { before: false, after: true }],
+
     // disallow modifying variables of class declarations
-    'no-class-assign': 0,
+    // https://eslint.org/docs/rules/no-class-assign
+    'no-class-assign': 'error',
+
     // disallow arrow functions where they could be confused with comparisons
-    // http://eslint.org/docs/rules/no-confusing-arrow
-    'no-confusing-arrow': [2, {
-      'allowParens': true,
+    // https://eslint.org/docs/rules/no-confusing-arrow
+    'no-confusing-arrow': ['error', {
+      allowParens: true,
     }],
+
     // disallow modifying variables that are declared using const
-    'no-const-assign': 2,
+    'no-const-assign': 'error',
+
     // disallow duplicate class members
-    // http://eslint.org/docs/rules/no-dupe-class-members
-    'no-dupe-class-members': 2,
+    // https://eslint.org/docs/rules/no-dupe-class-members
+    'no-dupe-class-members': 'error',
+
     // disallow importing from the same path more than once
-    // http://eslint.org/docs/rules/no-duplicate-imports
-    'no-duplicate-imports': 2,
+    // https://eslint.org/docs/rules/no-duplicate-imports
+    // replaced by https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md
+    'no-duplicate-imports': 'off',
+
     // disallow symbol constructor
-    // http://eslint.org/docs/rules/no-new-symbol
-    'no-new-symbol': 2,
-    // disallow specific globals
-    'no-restricted-globals': 0,
+    // https://eslint.org/docs/rules/no-new-symbol
+    'no-new-symbol': 'error',
+
     // disallow specific imports
-    // http://eslint.org/docs/rules/no-restricted-imports
-    'no-restricted-imports': 0,
-    // disallow to use this/super before super() calling in constructors.
-    'no-this-before-super': 0,
-    // require let or const instead of var
-    'no-var': 2,
-    // disallow unnecessary constructor
-    // http://eslint.org/docs/rules/no-useless-constructor
-    'no-useless-constructor': 2,
-    // require method and property shorthand syntax for object literals
-    // http://eslint.org/docs/rules/object-shorthand
-    'object-shorthand': [2, 'always'],
-    // suggest using arrow functions as callbacks
-    'prefer-arrow-callback': 2,
-    // suggest using of const declaration for variables that are never modified after declared
-    'prefer-const': 2,
-    // suggest using the spread operator instead of .apply()
-    'prefer-spread': 0,
-    // suggest using Reflect methods where applicable
-    'prefer-reflect': 0,
-    // use rest parameters instead of arguments
-    // http://eslint.org/docs/rules/prefer-rest-params
-    'prefer-rest-params': 2,
-    // suggest using template literals instead of string concatenation
-    // http://eslint.org/docs/rules/prefer-template
-    'prefer-template': 2,
-    // disallow generator functions that do not have yield
-    'require-yield': 0,
-    // import sorting
-    // http://eslint.org/docs/rules/sort-imports
-    'sort-imports': 0,
-    // enforce usage of spacing in template strings
-    // http://eslint.org/docs/rules/template-curly-spacing
-    'template-curly-spacing': 2,
-    // enforce spacing around the * in yield* expressions
-    // http://eslint.org/docs/rules/yield-star-spacing
-    'yield-star-spacing': [2, 'after'],
-    // disallow invalid exports, e.g. multiple defaults
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/export.md
-    'import/export': 2,
-    // ensure default import coupled with default export
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/default.md#when-not-to-use-it
-    'import/default': 0,
-    // Ensure consistent use of file extension within the import path
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
-    // TODO: enable
-    'import/extensions': [0, 'never'],
-    // ensure named imports coupled with named exports
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/named.md#when-not-to-use-it
-    'import/named': 0,
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/namespace.md
-    'import/namespace': 0,
-    // Forbid the use of extraneous packages
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-extraneous-dependencies.md
-    // TODO: enable
-    'import/no-extraneous-dependencies': [0, { 'devDependencies': false }],
-    // ensure imports point to files/modules that can be resolved
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-unresolved.md
-    'import/no-unresolved': [2, { 'commonjs': true }],
-    // do not allow a default import name to match a named export
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default.md
-    // TODO: enable
-    'import/no-named-as-default': 0,
-    // disallow require()
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-commonjs.md
-    'import/no-commonjs': 0,
-    // disallow AMD require/define
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-amd.md
-    // TODO: enable
-    'import/no-amd': 0,
-    // disallow non-import statements appearing before import statements
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/imports-first.md
-    // TODO: enable?
-    'import/imports-first': [0, 'absolute-first'],
-    // disallow duplicate imports
-    // TODO: enable
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-duplicates.md
-    'import/no-duplicates': 0,
-    // disallow use of jsdoc-marked-deprecated imports
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-deprecated.md
-    'import/no-deprecated': 0,
-    // disallow namespace imports
-    // TODO: enable?
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-namespace.md
-    'import/no-namespace': 0,
-    // warn on accessing default export property names that are also named exports
-    // TODO: enable?
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-named-as-default-member.md
-    'import/no-named-as-default-member': 0,
-    // No Node.js builtin modules
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-nodejs-modules.md
-    'import/no-nodejs-modules': 0,
-    // Enforce a convention in module import order
-    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
-    // TODO: enable?
-    'import/order': [0, {
-      'groups': ['builtin', 'external', 'internal', 'parent', 'sibling', 'index'],
+    // https://eslint.org/docs/rules/no-restricted-imports
+    'no-restricted-imports': ['off', {
+      paths: [],
+      patterns: []
     }],
-  },
-  'settings': {
-    'import/resolver': {
-      'node': {
-        'extensions': ['.js', '.json']
-      }
-    }
+
+    // disallow to use this/super before super() calling in constructors.
+    // https://eslint.org/docs/rules/no-this-before-super
+    'no-this-before-super': 'error',
+
+    // disallow useless computed property keys
+    // https://eslint.org/docs/rules/no-useless-computed-key
+    'no-useless-computed-key': 'error',
+
+    // disallow unnecessary constructor
+    // https://eslint.org/docs/rules/no-useless-constructor
+    'no-useless-constructor': 'error',
+
+    // disallow renaming import, export, and destructured assignments to the same name
+    // https://eslint.org/docs/rules/no-useless-rename
+    'no-useless-rename': ['error', {
+      ignoreDestructuring: false,
+      ignoreImport: false,
+      ignoreExport: false,
+    }],
+
+    // require let or const instead of var
+    'no-var': 'error',
+
+    // require method and property shorthand syntax for object literals
+    // https://eslint.org/docs/rules/object-shorthand
+    'object-shorthand': ['error', 'always', {
+      ignoreConstructors: false,
+      avoidQuotes: true,
+    }],
+
+    // suggest using arrow functions as callbacks
+    'prefer-arrow-callback': ['error', {
+      allowNamedFunctions: false,
+      allowUnboundThis: true,
+    }],
+
+    // suggest using of const declaration for variables that are never modified after declared
+    'prefer-const': ['error', {
+      destructuring: 'any',
+      ignoreReadBeforeAssign: true,
+    }],
+
+    // Prefer destructuring from arrays and objects
+    // https://eslint.org/docs/rules/prefer-destructuring
+    'prefer-destructuring': ['error', {
+      VariableDeclarator: {
+        array: false,
+        object: true,
+      },
+      AssignmentExpression: {
+        array: true,
+        object: false,
+      },
+    }, {
+      enforceForRenamedProperties: false,
+    }],
+
+    // disallow parseInt() in favor of binary, octal, and hexadecimal literals
+    // https://eslint.org/docs/rules/prefer-numeric-literals
+    'prefer-numeric-literals': 'error',
+
+    // suggest using Reflect methods where applicable
+    // https://eslint.org/docs/rules/prefer-reflect
+    'prefer-reflect': 'off',
+
+    // use rest parameters instead of arguments
+    // https://eslint.org/docs/rules/prefer-rest-params
+    'prefer-rest-params': 'error',
+
+    // suggest using the spread operator instead of .apply()
+    // https://eslint.org/docs/rules/prefer-spread
+    'prefer-spread': 'error',
+
+    // suggest using template literals instead of string concatenation
+    // https://eslint.org/docs/rules/prefer-template
+    'prefer-template': 'error',
+
+    // disallow generator functions that do not have yield
+    // https://eslint.org/docs/rules/require-yield
+    'require-yield': 'error',
+
+    // enforce spacing between object rest-spread
+    // https://eslint.org/docs/rules/rest-spread-spacing
+    'rest-spread-spacing': ['error', 'never'],
+
+    // import sorting
+    // https://eslint.org/docs/rules/sort-imports
+    'sort-imports': ['off', {
+      ignoreCase: false,
+      ignoreDeclarationSort: false,
+      ignoreMemberSort: false,
+      memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
+    }],
+
+    // require a Symbol description
+    // https://eslint.org/docs/rules/symbol-description
+    'symbol-description': 'error',
+
+    // enforce usage of spacing in template strings
+    // https://eslint.org/docs/rules/template-curly-spacing
+    'template-curly-spacing': 'error',
+
+    // enforce spacing around the * in yield* expressions
+    // https://eslint.org/docs/rules/yield-star-spacing
+    'yield-star-spacing': ['error', 'after']
   }
 };
